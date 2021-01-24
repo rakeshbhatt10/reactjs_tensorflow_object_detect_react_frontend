@@ -65,7 +65,6 @@ export default class ImageOps extends React.Component {
     }
 
     render() {
-        // console.log(this.state.image_object_details, " image object details ");
         return (
             <Container maxWidth="md">
                 <Grid container spacing={2}>
@@ -168,6 +167,10 @@ class ImageDetails extends React.Component {
                                     <TableRow key={row.className}>
                                         <TableCell component="th" scope="row">
                                         {row.class}
+
+                                        ({row.bbox.reduce((box_borders, box) => {
+                                            return box_borders = box_borders + ","+box.toFixed(2)
+                                        }, '')})
                                         </TableCell>
                                         <TableCell align="right">{row.score.toFixed(2)}</TableCell>
                                     </TableRow>
